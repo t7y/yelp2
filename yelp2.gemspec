@@ -23,4 +23,12 @@ Gem::Specification.new do |s|
   s.add_dependency('addressable', '>= 2.2.6')
   s.add_dependency('json', '>= 1.5.1')
   
+  s.post_install_message =<<eos
+********************************************************************************
+  Thanks for installing yelp2.
+  Follow me on Twitter @tianjerry for announcements, updates, and news.
+  https://twitter.com/tianjerry
+********************************************************************************
+eos
+  
 end
