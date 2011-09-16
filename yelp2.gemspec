@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "yelp2"
   s.version     = Yelp2::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Michael Pilat"]
-  s.email       = ["mike@mikepilat.com"]
+  s.authors     = ["Jerry Tian"]
+  s.email       = ["tianjerry@gmail.com"]
   s.homepage    = ""
   s.summary     = %q{A simple wrapper around the Yelp v2 API}
   s.description = %q{A simple wrapper around the Yelp v2 API}
