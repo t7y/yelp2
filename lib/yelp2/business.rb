@@ -13,8 +13,8 @@ module Yelp
     end
     
     def method_missing(method, *args, &block)
-      raise "Unknown method: #{method}" unless attributes.keys.include?(method)
-      attributes.fetch(method)
+      raise "Unknown method: #{method}" unless attributes.keys.include?(method.to_s)
+      attributes.fetch(method.to_s)
     end
     
   end
