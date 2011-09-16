@@ -2,6 +2,7 @@
 module Yelp
 
   class Business
+    attr_reader :attributes
     
     def initialize(hash)
       @attributes = hash
@@ -12,8 +13,8 @@ module Yelp
     end
     
     def method_missing(method, *args, &block)
-      raise "Unknown method: #{method}" unless @attributes.keys.include?(method)
-      @attributes.fetch(method)
+      raise "Unknown method: #{method}" unless attributes.keys.include?(method)
+      attributes.fetch(method)
     end
     
   end
