@@ -24,27 +24,24 @@ module Yelp
     
 
     # Search for a given optional term and locations
-    #
-    # term          - (Optional) Search term.
-    # location      - Location to search
-    # location_type - Location Hash continaing one of three search types.
-    #
+    # search hash accepts parameters from http://www.yelp.com/developers/documentation/v2/search_api
+    # 
+    # :term          - (Optional) Search term.
+    # :location      - Location to search
+    # :offset        - use to paginate results
     # Example
-    #   search("dinner", "san+francisco", :location)
-    #   search("dinner", "34.720,-112.299", :ll)
+    #   search(:term => "dinner", :location => "san+francisco")
     #
     # Returns hash of businesses found.
-    def search(term, location)
-      raise ArgumentError, "Location must be a hash and of size 1" unless location.is_a?(Hash) || location.size != 1
+    def search(search_hash={})
+      raise ArgumentError, "search_hash must be a hash" unless search_hash.is_a?(Hash)
       uri = Addressable::URI.new(  
         :scheme => "http",
         :host => API_HOST,
         :path => SEARCH_PATH
       )
      
-      uri.query_values = {
-        :term => term
-      }.merge(:location => location)
+      uri.query_values = search_hash
       
       res = @access_token.get(uri.to_s)
       hash = JSON.parse(res.body)
